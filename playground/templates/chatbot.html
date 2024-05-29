@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>CHATBOT APP</h1>
+    <div>
+        <div id="chatbot">
+            <p class="botText"><span>Hi there</span></p>
+        </div>
+        <div id="userInput">
+            <input type="text" id="textInput" name="userMessage" placeholder="Type your message..."/>
+            <input type="submit" value="send" id="buttonInput"/>
+        </div>
+    </div>
+    <script>
+        function getUserResponse() {
+            var userText = $('#textInput').val();
+            var userHTML = '<p class="userText">User: <span>' + userText + '</span></p>';
+            $('#textInput').val("");
+            $('#chatbot').append(userHTML);
+
+            $.get("{% url 'getResponse' %}", { userMessage: userText })
+                .done(function(data) {
+                    var returnedMessage = '<p class="botText">Chatbot: <span>' + data.response + '</span></p>';
+                    $('#chatbot').append(returnedMessage);
+                })
+                .fail(function(xhr, status, error) {
+                    var errorMessage = '<p class="botText">Chatbot: <span>Sorry, there was an error processing your request.</span></p>';
+                    $('#chatbot').append(errorMessage);
+                    console.log("Error: " + error);
+                });
+        
+
+        $('#buttonInput').click(function() {
+            getUserResponse();
+        });
+    }
+    </script>
+</body>
+</html>
