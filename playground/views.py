@@ -7,11 +7,14 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def registration(request):
-    return render(request, 'registration.html')
+def signin(request):
+    return render(request, 'signin.html')
 
-def login(request):
-    return render(request, 'login.html')
+def signup(request):
+    return render(request, 'signup.html')
+
+def signout(request):
+    return render(request, 'signout.html')
 
 def chatbot(request):
     return render(request, 'chatbot.html')
