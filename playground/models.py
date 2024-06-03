@@ -10,6 +10,7 @@ class Student(models.Model):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=1)
     age = models.PositiveSmallIntegerField()
 
+
     def __str__(self):
         return self.name
 
@@ -20,4 +21,3 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.name
-
