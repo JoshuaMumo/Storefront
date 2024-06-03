@@ -8,8 +8,8 @@ admin.site.register(Subject)
 
 class StudentAdminSite(admin.ModelAdmin):
     model = Student
-    fields = ['name', 'admno', 'grade', 'subjects']
-    list_display = ('name', 'admno', 'grade')
+    fields = ['name', 'admno', 'grade', 'age','gender','subjects']
+    list_display = ('name', 'admno', 'grade','gender')
     actions = ['promote_to_next_grade']
 
     def promote_to_next_grade(self, request, queryset):
