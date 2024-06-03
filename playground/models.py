@@ -1,7 +1,6 @@
 from django.db import models
-from django.utils import timezone as django_timezone
 from .choices import GENDER_CHOICES
-from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Student(models.Model):
@@ -22,11 +21,3 @@ class Teacher(models.Model):
     def __str__(self):
         return self.name
 
-class Post(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField()
-    date_posted = models.DateTimeField(default=django_timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.title
