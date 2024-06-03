@@ -16,7 +16,7 @@ class Student(models.Model):
 
 class Teacher(models.Model):
     name = models.CharField(max_length=100)
-    gender = models.CharField(max_length=30)
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=1)
     age = models.PositiveSmallIntegerField()
 
     def __str__(self):
