@@ -1,5 +1,7 @@
+import subprocess
 from django.shortcuts import render
-from django.http import JsonResponse, HttpRequest
+from django.http import HttpResponse, JsonResponse, HttpRequest
+import psutil
 
 def home(request):
     return render(request, 'home.html')
@@ -16,6 +18,16 @@ def signup(request):
 def signout(request):
     return render(request, 'signout.html')
 
-def chatbot(request):
-    return render(request, 'chatbot.html')
 
+def start_streamlit():
+    # Check if Streamlit is already running
+    for proc in psutil.process_iter():
+        if "streamlit" in proc.name():
+            return
+
+    # Start Streamlit subprocess
+    subprocess.Popen(["streamlit", "run", "ragchatbot.py"])
+
+def chatbot_dashboard(request):
+    start_streamlit()
+    return HttpResponse("Streamlit Chatbot Dashboard is running!")
