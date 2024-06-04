@@ -2,6 +2,8 @@ import subprocess
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpRequest
 import psutil
+from django.shortcuts import redirect
+
 
 def home(request):
     return render(request, 'home.html')
@@ -30,4 +32,4 @@ def start_streamlit():
 
 def chatbot_dashboard(request):
     start_streamlit()
-    return HttpResponse("Streamlit Chatbot Dashboard is running!")
+    return redirect("http://localhost:8501")
