@@ -30,6 +30,8 @@ def start_streamlit():
     # Start Streamlit subprocess
     subprocess.Popen(["streamlit", "run", "ragchatbot.py"])
 
-def chatbot_dashboard(request):
+def rag_chatbot(request):
     start_streamlit()
     return redirect("http://localhost:8501")
+
+
