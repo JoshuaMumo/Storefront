@@ -25,6 +25,7 @@ class Student(models.Model):
         return self.name
     class Meta:
         ordering = ['grade']
+        verbose_name_plural = 'Students'
 
 class Teacher(models.Model):
     name = models.CharField(max_length=100)

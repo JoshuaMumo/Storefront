@@ -9,6 +9,7 @@ admin.site.site_header = 'JOSHUA ADMIN'
 class SubjectAdminSite(admin.ModelAdmin):
     model = Subject
     list_display = ['name', 'student_count','teacher_count']
+    search_fields = ['name',]
 
     def student_count(self, obj):
         return obj.student_set.count()
@@ -28,6 +29,7 @@ class TeacherAdminSite(admin.ModelAdmin):
     model = Teacher
     list_display = ['name','grade_assigned']
     list_filter = ['grade_assigned']
+    search_fields = ['name',]
     
 admin.site.register(Teacher, TeacherAdminSite)
     
@@ -38,6 +40,7 @@ class StudentAdminSite(admin.ModelAdmin):
     list_display = ('name', 'admno', 'grade','gender')
     list_filter = ['grade']
     list_display_links = ['name']
+    search_fields = ['name',]
     actions = ['promote_to_next_grade']
 
     def promote_to_next_grade(self, request, queryset):
