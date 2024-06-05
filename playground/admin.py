@@ -3,9 +3,14 @@ from .models import Student, Teacher, Subject
 
 # Register your models here.
 admin.site.site_header = 'JOSHUA ADMIN'
-admin.site.register(Teacher)
 admin.site.register(Subject)
-
+class TeacherAdminSite(admin.ModelAdmin):
+    model = Teacher
+    list_display = ['name','grade_assigned']
+    
+admin.site.register(Teacher, TeacherAdminSite)
+    
+    
 class StudentAdminSite(admin.ModelAdmin):
     model = Student
     fields = ['name', 'admno', 'grade', 'age','gender','subjects']
