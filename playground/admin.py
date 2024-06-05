@@ -2,7 +2,11 @@ from django.contrib import admin
 from .models import Student, Teacher, Subject
 
 # Register your models here.
-admin.site.site_header = 'JOSHUA ADMIN'
+class PlaygroundAdminSite(admin.AdminSite):
+    site_header = 'Playground admin site'
+
+playground_site = PlaygroundAdminSite(name='playground_admin')
+playground_site.site_header = 'JOSHUA ADMIN'
 
 
 # Subject admin with number of students column
@@ -22,7 +26,7 @@ class SubjectAdminSite(admin.ModelAdmin):
     teacher_count.short_description = 'Number of teachers'
 
 # Register the Subject model with the custom admin site
-admin.site.register(Subject, SubjectAdminSite)
+playground_site.register(Subject, SubjectAdminSite)
 
 
 class TeacherAdminSite(admin.ModelAdmin):
@@ -31,7 +35,7 @@ class TeacherAdminSite(admin.ModelAdmin):
     list_filter = ['grade_assigned']
     search_fields = ['name',]
     
-admin.site.register(Teacher, TeacherAdminSite)
+playground_site.register(Teacher, TeacherAdminSite)
     
     
 class StudentAdminSite(admin.ModelAdmin):
@@ -78,4 +82,4 @@ class StudentAdminSite(admin.ModelAdmin):
     promote_to_next_grade.short_description = "Promote selected students to the next grade, assign subjects, or remove if they finished grade 6"
 
 # Register the Student model with the StudentAdminSite
-admin.site.register(Student, StudentAdminSite)
+playground_site.register(Student, StudentAdminSite)

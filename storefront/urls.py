@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from users import views as user_views
+from playground.admin import playground_site
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', playground_site.urls),
     path('', include('playground.urls')),
     path('dashboard/', user_views.dashboard, name='dashboard'),
 ]
