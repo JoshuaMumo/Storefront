@@ -27,6 +27,7 @@ admin.site.register(Subject, SubjectAdminSite)
 class TeacherAdminSite(admin.ModelAdmin):
     model = Teacher
     list_display = ['name','grade_assigned']
+    list_filter = ['grade_assigned']
     
 admin.site.register(Teacher, TeacherAdminSite)
     
@@ -35,6 +36,8 @@ class StudentAdminSite(admin.ModelAdmin):
     model = Student
     fields = ['name', 'admno', 'grade', 'age','gender','subjects']
     list_display = ('name', 'admno', 'grade','gender')
+    list_filter = ['grade']
+    list_display_links = ['name']
     actions = ['promote_to_next_grade']
 
     def promote_to_next_grade(self, request, queryset):
