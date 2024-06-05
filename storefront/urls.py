@@ -22,7 +22,8 @@ from playground.admin import playground_site
 
 
 urlpatterns = [
-    path('admin/', playground_site.urls),
+    path('admin/', admin.site.urls),
+    path('playgroundadmin/', playground_site.urls),
     path('', include('playground.urls')),
     path('dashboard/', user_views.dashboard, name='dashboard'),
 ]

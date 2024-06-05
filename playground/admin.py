@@ -7,7 +7,7 @@ class PlaygroundAdminSite(admin.AdminSite):
 
 playground_site = PlaygroundAdminSite(name='playground_admin')
 playground_site.site_header = 'JOSHUA ADMIN'
-
+admin.site.site_header = 'JOSHUA ADMIN'
 
 # Subject admin with number of students column
 class SubjectAdminSite(admin.ModelAdmin):
@@ -27,7 +27,7 @@ class SubjectAdminSite(admin.ModelAdmin):
 
 # Register the Subject model with the custom admin site
 playground_site.register(Subject, SubjectAdminSite)
-
+admin.site.register(Subject, SubjectAdminSite)
 
 class TeacherAdminSite(admin.ModelAdmin):
     model = Teacher
@@ -36,7 +36,7 @@ class TeacherAdminSite(admin.ModelAdmin):
     search_fields = ['name',]
     
 playground_site.register(Teacher, TeacherAdminSite)
-    
+admin.site.register(Teacher, TeacherAdminSite)
     
 class StudentAdminSite(admin.ModelAdmin):
     model = Student
@@ -83,3 +83,4 @@ class StudentAdminSite(admin.ModelAdmin):
 
 # Register the Student model with the StudentAdminSite
 playground_site.register(Student, StudentAdminSite)
+admin.site.register(Student, StudentAdminSite)
