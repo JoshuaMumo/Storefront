@@ -3,7 +3,27 @@ from .models import Student, Teacher, Subject
 
 # Register your models here.
 admin.site.site_header = 'JOSHUA ADMIN'
-admin.site.register(Subject)
+
+
+# Subject admin with number of students column
+class SubjectAdminSite(admin.ModelAdmin):
+    model = Subject
+    list_display = ['name', 'student_count','teacher_count']
+
+    def student_count(self, obj):
+        return obj.student_set.count()
+
+    student_count.short_description = 'Number of Students'
+    
+    def teacher_count(self, obj):
+        return obj.teacher_set.count()
+
+    teacher_count.short_description = 'Number of teachers'
+
+# Register the Subject model with the custom admin site
+admin.site.register(Subject, SubjectAdminSite)
+
+
 class TeacherAdminSite(admin.ModelAdmin):
     model = Teacher
     list_display = ['name','grade_assigned']
