@@ -60,7 +60,7 @@ body {
 	background: var(--light);
 	z-index: 2000;
 	font-family: var(--lato);
-	transition: .3s ease;
+	transition: width 0.3s ease;
 	overflow-x: hidden;
 	scrollbar-width: none;
 }

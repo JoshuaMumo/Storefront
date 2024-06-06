@@ -1,119 +1,117 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>HTML Form</title>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-                background-color: #f0f0f0;
-            }
+  <head>
+    <title>HTML Form</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
 
-            form {
-                width: 400px;
-                background-color: #fff;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 0 10px
-                    rgba(0, 0, 0, 0.1);
-            }
+      form {
+        width: 400px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-            fieldset {
-                border: 1px solid black;
-                padding: 10px;
-                margin: 0;
-            }
+      fieldset {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 0;
+      }
 
-            legend {
-                font-weight: bold;
-                margin-bottom: 10px;
-            }
+      legend {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
 
-            label {
-                display: block;
-                margin-bottom: 5px;
-            }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
 
-            input[type="text"],
-            input[type="email"],
-            input[type="password"],
-            textarea,
-            input[type="date"] {
-                width: calc(100% - 20px);
-                padding: 8px;
-                margin-bottom: 10px;
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-            }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      textarea,
+      input[type="date"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
 
-            input[type="radio"] {
-                margin-left: 20px;
-            }
+      input[type="radio"] {
+        margin-left: 20px;
+      }
 
-            input[type="submit"] {
-                padding: 10px 20px;
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
 
-                border-radius: 5px;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-    <body>
-        <form>
-            <fieldset>
-                <legend>
-                    User personal information
-                </legend>
-                <label
-                    >Enter your full name</label
-                >
-                <input type="text" name="name" />
-                <label>Enter your email</label>
-                <input
-                    type="email"
-                    name="email"
-                />
-                <label>Enter your password</label>
-                <input
-                    type="password"
-                    name="pass"
-                />
-                <label
-                    >Confirm your password</label
-                >
-                <input
-                    type="password"
-                    name="confirmPass"
-                />
-                <label>Enter your gender</label>
-                <input
-                    type="radio"
-                    name="gender"
-                    value="male"
-                />Male
-                <input
-                    type="radio"
-                    name="gender"
-                    value="female"
-                />Female
-                <label
-                    >Enter your Date of
-                    Birth</label
-                >
-                <input type="date" name="dob" />
-                <label>Enter your Address:</label>
-                <textarea
-                    name="address"
-                ></textarea>
-                <input
-                    type="submit"
-                    value="submit"
-                />
-            </fieldset>
-        </form>
-    </body>
+      input[type="submit"]:hover {
+        background-color: #218838;
+      }
+
+      select {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>User personal information</legend>
+        <label>Enter your full name</label>
+        <input type="text" name="name" />
+
+        <label>Enter your email</label>
+        <input type="email" name="email" />
+
+        <label>Enter your password</label>
+        <input type="password" name="pass" />
+
+        <label>Confirm your password</label>
+        <input type="password" name="confirmPass" />
+
+        <label>Enter your gender</label>
+        <input type="radio" name="gender" value="male" />Male
+        <input type="radio" name="gender" value="female" />Female
+
+        <label>Enter your Date of Birth</label>
+        <input type="date" name="dob" />
+
+        <label>Enter your Address:</label>
+        <textarea name="address"></textarea>
+
+        <label>Select your role</label>
+        <select name="role">
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="administrator">Administrator</option>
+        </select>
+
+        <input type="submit" value="Submit" />
+      </fieldset>
+    </form>
+  </body>
 </html>

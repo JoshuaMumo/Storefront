@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
-
     <title>AdminHub</title>
 </head>
 <body>
-
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
@@ -19,19 +16,19 @@
         </a>
         <ul class="side-menu top">
             <li class="active">
-                <a href="#">
+                <a href="{% url 'dashboard' %}">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'teachers' %}">
                     <i class='bx bxs-group'></i>
                     <span class="text">Teachers</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'students' %}">
                     <i class='bx bxs-user'></i>
                     <span class="text">Students</span>
                 </a>
@@ -105,10 +102,6 @@
                         </li>
                     </ul>
                 </div>
-                <a href="#" class="btn-download">
-                    <i class='bx bxs-cloud-download'></i>
-                    <span class="text">Download PDF</span>
-                </a>
             </div>
 
             <ul class="box-info">

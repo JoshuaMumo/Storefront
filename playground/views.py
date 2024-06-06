@@ -4,6 +4,8 @@ from django.http import HttpResponse, JsonResponse, HttpRequest
 import psutil
 from django.shortcuts import redirect
 
+from playground.models import Student, Teacher
+
 
 def home(request):
     return render(request, 'home.html')
@@ -34,4 +36,12 @@ def rag_chatbot(request):
     start_streamlit()
     return redirect("http://localhost:8501")
 
+
+def teachers_view(request):
+    teachers = Teacher.objects.all()
+    return render(request, 'index.html', {'teachers': teachers})
+
+def students_view(request):
+    students = Student.objects.all()
+    return render(request, 'index.html', {'students': students})
 

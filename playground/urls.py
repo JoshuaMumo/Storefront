@@ -8,4 +8,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('signout/', views.signout, name='signout'),
     path('rag_chatbot/', views.rag_chatbot, name='rag_chatbot'),
-]
+    path('teachers/', views.teachers_view, name='teachers'),
+    path('students/', views.students_view, name='students'),
+]   
