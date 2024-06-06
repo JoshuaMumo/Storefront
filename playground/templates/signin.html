@@ -1,72 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Sign in</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-        }
-        h1 {
-            margin: 0;
-            margin-bottom: 20px;
-        }
-        form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        input[type="text"], input[type="password"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        input[type="submit"] {
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        input[type="submit"]:hover {
-            background-color: #218838;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 300px;
+      }
+      h1 {
+        margin: 0;
+        margin-bottom: 20px;
+      }
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      input[type="submit"]:hover {
+        background-color: #218838;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Sign in</h1>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-            <input type="submit" value="Submit">
-        </form>
+      <h1>Sign in</h1>
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+        <input type="submit" value="Submit" />
+      </form>
     </div>
+    <script>
+      function validateLoginForm() {
+        let isValid = true;
 
-</body>
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const usernameError = document.getElementById("username-error");
+        const passwordError = document.getElementById("password-error");
+
+        usernameError.textContent = "";
+        passwordError.textContent = "";
+
+        if (username === "") {
+          usernameError.textContent = "Please enter your username.";
+          isValid = false;
+        }
+
+        if (password === "") {
+          passwordError.textContent = "Please enter your password.";
+          isValid = false;
+        }
+
+        return isValid;
+      }
+    </script>
+  </body>
 </html>
