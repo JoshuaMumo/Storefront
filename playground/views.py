@@ -14,6 +14,11 @@ def about(request):
     return render(request, 'about.html')
 
 def signin(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        admno = request.POST.get('admno')
+        new_student = Student(name=name, admno=admno)
+        new_student.save()
     return render(request, 'signin.html')
 
 def signup(request):

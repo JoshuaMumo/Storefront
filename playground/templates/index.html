@@ -110,21 +110,21 @@
           <li>
             <i class="bx bxs-calendar-check"></i>
             <span class="text">
-              <h3>450</h3>
+              <h3>{{ students.count }}</h3>
               <p>Students</p>
             </span>
           </li>
           <li>
             <i class="bx bxs-group"></i>
             <span class="text">
-              <h3>15</h3>
+              <h3>{{ teachers.count }}</h3>
               <p>Teachers</p>
             </span>
           </li>
           <li>
             <i class="bx bxs-user"></i>
             <span class="text">
-              <h3>25</p>
+              <h3>{{ subjects.count }}</h3>
               <p>Subjects</p>
             </span>
           </li>
@@ -146,23 +146,16 @@
                 </tr>
               </thead>
               <tbody>
+                {% for student in recent_students %}
                 <tr>
                   <td>
                     <img src="{% static 'img/people.png' %}" />
-                    <p>Jane Doe</p>
+                    <p>{{ student.name }}</p>
                   </td>
-                  <td>Grade 4</td>
-                  <td><span class="status completed">Active</span></td>
+                  <td>{{ student.grade }}</td>
+                  <td><span class="status {% if student.status == 'Active' %}completed{% else %}pending{% endif %}">{{ student.status }}</span></td>
                 </tr>
-                <tr>
-                  <td>
-                    <img src="{% static 'img/people.png' %}" />
-                    <p>John Smith</p>
-                  </td>
-                  <td>Grade 2</td>
-                  <td><span class="status pending">Inactive</span></td>
-                </tr>
-                <!-- Add more students here -->
+                {% endfor %}
               </tbody>
             </table>
           </div>
@@ -173,26 +166,12 @@
               <i class="bx bx-filter"></i>
             </div>
             <ul class="todo-list">
-              <li class="completed">
-                <p>Grade assignments</p>
+              {% for task in todos %}
+              <li class="{% if task.completed %}completed{% else %}not-completed{% endif %}">
+                <p>{{ task.description }}</p>
                 <i class="bx bx-dots-vertical-rounded"></i>
               </li>
-              <li class="completed">
-                <p>Update student records</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
-              <li class="not-completed">
-                <p>Schedule parent meetings</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
-              <li class="completed">
-                <p>Plan school event</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
-              <li class="not-completed">
-                <p>Prepare lesson plans</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
+              {% endfor %}
             </ul>
           </div>
         </div>
