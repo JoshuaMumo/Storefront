@@ -59,15 +59,25 @@
 <body>
     <div class="container">
         <h1>Sign in</h1>
-        <form>
+        <form id="loginForm">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username">
-            
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
-            
             <input type="submit" value="Submit">
         </form>
     </div>
+    <script>
+        const form = document.getElementById('loginForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Add your form validation and submission logic here
+            // For example, you can send an AJAX request to your server-side endpoint
+
+            // Redirect to the dashboard URL
+            window.location.href = '/dashboard/'; // Assuming '/dashboard/' is the correct URL pattern
+        });
+    </script>
 </body>
 </html>
