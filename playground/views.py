@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpRequest
 import psutil
 from django.shortcuts import redirect
-
+from .forms import StudentForm
 from playground.models import Student, Teacher
 
 
@@ -14,12 +14,14 @@ def about(request):
     return render(request, 'about.html')
 
 def signin(request):
+    form = StudentForm
     if request.method == 'POST':
-        name = request.POST.get('name')
-        admno = request.POST.get('admno')
-        new_student = Student(name=name, admno=admno)
-        new_student.save()
-    return render(request, 'signin.html')
+        print(request.POST)
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+    content = {'form': form}
+    return render(request, 'signin.html', content)
 
 def signup(request):
     return render(request, 'signup.html')

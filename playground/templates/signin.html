@@ -61,10 +61,8 @@
     <div class="container">
       <h1>Sign in</h1>
       <form action = "" method = "POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" />
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" />
+        {% csrf_token %}
+        {{form}}
         <input type="submit" value="Submit" />
       </form>
     </div>
