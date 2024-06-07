@@ -146,14 +146,18 @@
                 </tr>
               </thead>
               <tbody>
-                {% for student in recent_students %}
+                {% for student in students %}
                 <tr>
                   <td>
-                    <img src="{% static 'img/people.png' %}" />
                     <p>{{ student.name }}</p>
                   </td>
                   <td>{{ student.grade }}</td>
-                  <td><span class="status {% if student.status == 'Active' %}completed{% else %}pending{% endif %}">{{ student.status }}</span></td>
+                  <td>
+                    <span
+                      class="status {% if student.status == 'Active' %}completed{% else %}pending{% endif %}"
+                      >{{ student.status }}</span
+                    >
+                  </td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -161,18 +165,35 @@
           </div>
           <div class="todo">
             <div class="head">
-              <h3>Todos</h3>
-              <i class="bx bx-plus"></i>
+              <h3>Teachers</h3>
+              <i class="bx bx-search"></i>
               <i class="bx bx-filter"></i>
             </div>
-            <ul class="todo-list">
-              {% for task in todos %}
-              <li class="{% if task.completed %}completed{% else %}not-completed{% endif %}">
-                <p>{{ task.description }}</p>
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </li>
-              {% endfor %}
-            </ul>
+            <table>
+              <thead>
+                <tr>
+                  <th>Teacher</th>
+                  <th>Age</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for teacher in teachers %}
+                <tr>
+                  <td>
+                    <p>{{ teacher.name }}</p>
+                  </td>
+                  <td>{{ teacher.age }}</td>
+                  <td>
+                    <span
+                      class="status {% if teacher.status == 'Active' %}completed{% else %}pending{% endif %}"
+                      >{{ teacher.status }}</span
+                    >
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
       </main>
