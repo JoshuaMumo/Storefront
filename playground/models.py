@@ -18,7 +18,7 @@ class Student(models.Model):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=1)
     age = models.PositiveSmallIntegerField()
     subjects = models.ManyToManyField(Subject, blank=True)
-    
+
 
 
     def __str__(self):
@@ -37,6 +37,6 @@ class Teacher(models.Model):
     age = models.PositiveSmallIntegerField()
     grade_assigned = models.CharField(max_length=30, default='Unassigned')
     subjects = models.ManyToManyField(Subject, blank=True)
-    
+
     def __str__(self):
         return self.name

@@ -7,14 +7,14 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}" />
 
-    <title>AdminHub - Students</title>
+    <title>Students</title>
   </head>
   <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
       <a href="{% url 'dashboard' %}" class="brand">
         <i class="bx bxs-smile"></i>
-        <span class="text">AdminHub</span>
+        <span class="text">Student</span>
       </a>
       <ul class="side-menu top">
         <li>
@@ -56,7 +56,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="logout">
+          <a href="{% url 'signout' %}">
             <i class="bx bxs-log-out-circle"></i>
             <span class="text">Logout</span>
           </a>
@@ -85,9 +85,7 @@
           <i class="bx bxs-bell"></i>
           <span class="num">8</span>
         </a>
-        <a href="#" class="profile">
-          <img src="{% static 'img/people.png' %}" />
-        </a>
+
       </nav>
       <!-- NAVBAR -->
 
@@ -106,10 +104,6 @@
               </li>
             </ul>
           </div>
-          <a href="#" class="btn-download">
-            <i class="bx bxs-cloud-download"></i>
-            <span class="text">Download PDF</span>
-          </a>
         </div>
 
         <ul class="box-info">
