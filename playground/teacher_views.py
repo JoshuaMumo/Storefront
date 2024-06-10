@@ -1,32 +1,35 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import TeacherSignUpForm
-from .models import Teacher
+from playground.models import Teacher
+from .forms import TeacherSignUpForm, TeacherSignInForm
+from django.contrib.auth.models import User
+
 
 def teacher_signin(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
+        form = TeacherSignInForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None and hasattr(user, 'teacher'):
-                login(request, user)
-                return redirect('/teachers/')  # Redirect to the teacher page
-        return render(request, 'teacher_signin.html', {'form': form})
+            form.save()
+            return redirect('teachers/')  
     else:
-        form = AuthenticationForm()
+        form = TeacherSignInForm()
     return render(request, 'teacher_signin.html', {'form': form})
 
 def teacher_signup(request):
     if request.method == 'POST':
         form = TeacherSignUpForm(request.POST)
         if form.is_valid():
-            teacher = form.save()
-            teacher.user = request.user
+            # Create the teacher instance
+            teacher = Teacher(
+                user=User,
+                name=form.cleaned_data['name'],
+                gender=form.cleaned_data['gender'],
+                age=form.cleaned_data['age'],
+            )
             teacher.save()
+
+            # Save many-to-many relationships (subjects)
+            teacher.subjects.set(form.cleaned_data['subjects'])
+
             return redirect('/teacher_signin/')  # Redirect to the teacher sign-in page
     else:
         form = TeacherSignUpForm()
