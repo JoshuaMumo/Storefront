@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
-from playground.models import Teacher
 from .forms import TeacherSignUpForm, TeacherSignInForm
-from django.contrib.auth.models import User
+
 
 
 def teacher_signin(request):

@@ -18,14 +18,12 @@ def student_signin(request):
     else:
         return render(request, 'student_signin.html')
 
-def student_signup(request):
+def student(request):
     if request.method == 'POST':
         form = StudentSignUpForm(request.POST)
         if form.is_valid():
-            Student = form.save()
-            Student.user = request.user
-            Student.save()
-            return redirect('/student_signin/')  # Redirect to the student sign-in page
+            form.save()
+            return redirect('/students')
     else:
         form = StudentSignUpForm()
-    return render(request, 'student_signup.html', {'form': form})
+    return render(request, 'student.html', {'form': form})
