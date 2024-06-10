@@ -10,8 +10,7 @@ class Subject(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=30)
     admno = models.CharField(max_length=30)
-    grade = models.CharField(max_length=30)
-    
+    grade = models.CharField(max_length=30)    
     GENDER_CHOICES = (
     ('0', 'Male'),
     ('1', 'Female'),
@@ -19,6 +18,7 @@ class Student(models.Model):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=1)
     age = models.PositiveSmallIntegerField()
     subjects = models.ManyToManyField(Subject, blank=True)
+    
 
 
     def __str__(self):

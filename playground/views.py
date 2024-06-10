@@ -1,11 +1,11 @@
 import subprocess
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 import psutil
 from .forms import StudentSignUpForm, TeacherSignUpForm
 from .models import Student, Teacher
-from django.contrib.auth.models import User
+
 
 def home(request):
     return render(request, 'home.html')
@@ -32,7 +32,9 @@ def student_signup(request):
     if request.method == 'POST':
         form = StudentSignUpForm(request.POST)
         if form.is_valid():
-            form.save()
+            Student = form.save()
+            Student.user = request.user
+            Student.save()
             return redirect('/student_signin/')  # Redirect to the student sign-in page
     else:
         form = StudentSignUpForm()
@@ -57,7 +59,9 @@ def teacher_signup(request):
     if request.method == 'POST':
         form = TeacherSignUpForm(request.POST)
         if form.is_valid():
-            form.save()
+            teacher = form.save()
+            teacher.user = request.user
+            teacher.save()
             return redirect('/teacher_signin/')  # Redirect to the teacher sign-in page
     else:
         form = TeacherSignUpForm()
@@ -80,8 +84,11 @@ def rag_chatbot(request):
 
 def teachers_view(request):
     teachers = Teacher.objects.all()
-    return render(request, 'index.html', {'teachers': teachers})
+    return render(request, 'teacher.html', {'teachers': teachers})
 
 def students_view(request):
     students = Student.objects.all()
-    return render(request, 'index.html', {'students': students})
+    return render(request, 'student.html', {'students': students})
+
+def logout_view(request):
+    logout(request)
