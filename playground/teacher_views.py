@@ -18,19 +18,8 @@ def teacher_signup(request):
     if request.method == 'POST':
         form = TeacherSignUpForm(request.POST)
         if form.is_valid():
-            # Create the teacher instance
-            teacher = Teacher(
-                user=User,
-                name=form.cleaned_data['name'],
-                gender=form.cleaned_data['gender'],
-                age=form.cleaned_data['age'],
-            )
-            teacher.save()
-
-            # Save many-to-many relationships (subjects)
-            teacher.subjects.set(form.cleaned_data['subjects'])
-
-            return redirect('/teacher_signin/')  # Redirect to the teacher sign-in page
+            form.save()
+            return redirect('/teachers')
     else:
         form = TeacherSignUpForm()
     return render(request, 'teacher_signup.html', {'form': form})

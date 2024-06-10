@@ -16,6 +16,7 @@ class TeacherSignUpForm(forms.ModelForm):
     class Meta:
         model = Teacher
         fields = '__all__'
+        exclude = ('id','grade_assigned')
         
 class TeacherSignInForm(forms.ModelForm):
     class Meta:
