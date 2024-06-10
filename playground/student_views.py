@@ -18,7 +18,7 @@ def student_signin(request):
     else:
         return render(request, 'student_signin.html')
 
-def student(request):
+def student_signup(request):
     if request.method == 'POST':
         form = StudentSignUpForm(request.POST)
         if form.is_valid():
