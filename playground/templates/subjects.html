@@ -141,7 +141,7 @@
                   <td>
                   </td>
                   <td>
-                    <button class="btn-delete">Delete</button>
+                    <a href="{% url 'delete_subject' subject.name %}" class="btn-delete">Delete</a>
                   </td>
                 </tr>
                 {% endfor %}

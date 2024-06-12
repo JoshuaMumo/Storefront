@@ -81,7 +81,25 @@ def add_teacher(request):
 def update_teacher(request):
     return render(request, 'update_teacher.html')
 
+def update_teacher_profile(request, teacher_name):
+    teacher = get_object_or_404(Teacher, name=teacher_name)
+    if request.method == 'POST':
+        teacher.grade_assigned = request.POST.get('grade_assigned')
+        teacher.save()
+        return redirect('teachers')
+    return render(request, 'update_teacher.html', {'teacher': teacher})
+
 def delete_teacher(request, teacher_name):
     teacher = get_object_or_404(Teacher, name=teacher_name)
     teacher.delete()
     return redirect('teachers')
+
+def delete_student(request, student_name):
+    student = get_object_or_404(Student, name=student_name)
+    student.delete()
+    return redirect('student')
+
+def delete_subject(request, subject_name):
+    subject = get_object_or_404(Subject, name=subject_name)
+    subject.delete()
+    return redirect('subjects')
