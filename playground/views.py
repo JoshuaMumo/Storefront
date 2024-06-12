@@ -91,10 +91,8 @@ def add_subject(request):
         return redirect('subjects')
     return render(request, 'add_subject.html')
 
-def update_teacher(request):
-    return render(request, 'update_teacher.html')
 
-def update_teacher_profile(request, teacher_name):
+def update_teacher(request, teacher_name):
     teacher = get_object_or_404(Teacher, name=teacher_name)
     if request.method == 'POST':
         teacher.grade_assigned = request.POST.get('grade_assigned')
