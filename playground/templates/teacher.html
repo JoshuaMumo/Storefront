@@ -128,6 +128,8 @@
                 <tr>
                   <th>Teachers</th>
                   <th>Grade assigned</th>
+                  <th>Gender</th>
+                  <th>Age</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -136,10 +138,11 @@
                 {% for teacher in teachers %}
                 <tr>
                   <td>
-                    <img src="{% static 'img/people.png' %}" />
                     <p>{{ teacher.name }}</p>
                   </td>
                   <td>{{ teacher.grade_assigned }}</td>
+                  <td>{{ teacher.gender }}</td>
+                  <td>{{ teacher.age }}</td>
                   <td>
                     <span
                       class="status {% if teacher.status == 'active' %}completed{% else %}pending{% endif %}"
@@ -149,12 +152,14 @@
                     <a href="{% url 'update_teacher' teacher.name %}" class="btn-update">Update</a>
                     <a href="{% url 'delete_teacher' teacher.name %}" class="btn-delete">Delete</a>
                   </td>
+                  <td>
                   </td>
-                </tr>
+                </tr>          
                 {% endfor %}
               </tbody>
             </table>
           </div>
+          <a href="{% url 'add_teacher' %}" class="btn-add">Add Teacher</a>
         </div>
       </main>
       <!-- MAIN -->

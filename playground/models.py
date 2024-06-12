@@ -15,8 +15,8 @@ class Student(models.Model):
     admno = models.CharField(max_length=30, blank=True, unique=True)
     grade = models.CharField(max_length=30)    
     GENDER_CHOICES = (
-    ('0', 'Male'),
-    ('1', 'Female'),
+    ('M', 'Male'),
+    ('F', 'Female'),
     )
     gender = models.CharField(choices=GENDER_CHOICES, max_length=1)
     age = models.PositiveSmallIntegerField()
@@ -28,7 +28,7 @@ class Student(models.Model):
             if last_student and last_student.admno.isdigit():
                 self.admno = str(int(last_student.admno) + 1)
             else:
-                self.admno = '257'
+                self.admno = '5'
         super().save(*args, **kwargs)
 
     def __str__(self):

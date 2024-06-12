@@ -127,7 +127,6 @@
               <thead>
                 <tr>
                   <th>Subjects</th>
-                  <th>Grade assigned</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -137,9 +136,6 @@
                   <td>
                     <p>{{ subject.name }}</p>
                   </td>
-                  <td>{{ subject.grade_assigned }}</td>
-                  <td>
-                  </td>
                   <td>
                     <a href="{% url 'delete_subject' subject.name %}" class="btn-delete">Delete</a>
                   </td>
@@ -147,7 +143,9 @@
                 {% endfor %}
               </tbody>
             </table>
+
           </div>
+          <a href="{% url 'add_subject' %}" class="btn-add">Add Subject</a>
         </div>
       </main>
       <!-- MAIN -->

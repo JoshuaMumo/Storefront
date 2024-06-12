@@ -1,15 +1,10 @@
-from multiprocessing import AuthenticationError
 import subprocess
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
 import psutil
 from .models import Student, Subject, Teacher
-from Demos.win32ts_logoff_disconnected import username
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from aiohttp.client import request
 
 
 
@@ -72,11 +67,29 @@ def subjects_view(request):
 def add_teacher(request):
     if request.method == 'POST':
         name = request.POST.get('name')
-        email = request.POST.get('email')
-        teacher = Teacher(name=name, email=email)
-        teacher.save()
+        grade_assigned = request.POST.get('grade_assigned')
+        gender=request.POST.get('gender')
+        age=request.POST.get('age')
+        Teacher.objects.create(name=name, grade_assigned=grade_assigned, gender=gender, age=age)
         return redirect('teachers')
     return render(request, 'add_teacher.html')
+
+def add_student(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        grade = request.POST.get('grade')
+        gender=request.POST.get('gender')
+        age=request.POST.get('age')
+        Student.objects.create(name=name, grade=grade, gender=gender, age=age)
+        return redirect('students')
+    return render(request, 'add_student.html')
+
+def add_subject(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        Subject.objects.create(name=name)
+        return redirect('subjects')
+    return render(request, 'add_subject.html')
 
 def update_teacher(request):
     return render(request, 'update_teacher.html')
@@ -103,3 +116,5 @@ def delete_subject(request, subject_name):
     subject = get_object_or_404(Subject, name=subject_name)
     subject.delete()
     return redirect('subjects')
+
+
