@@ -14,14 +14,13 @@ urlpatterns = [
     path('teachers/', views.teachers_view, name='teachers'),
     path('students/', views.students_view, name='students'),
     path('subjects/', views.subjects_view, name='subjects'),
-    path('update_teacher/<str:teacher_name>', views.update_teacher, name='update_teacher'),
-    path('delete_teacher/<str:teacher_name>', views.delete_teacher, name='delete_teacher'),
     path('add_teacher/', views.add_teacher, name='add_teacher'),
     path('add_student/', views.add_student, name='add_student'),
     path('add_subject/', views.add_subject, name='add_subject'),
-    #path('update_student/<str:student_name>', views.update_student, name='update_student'),
+    path('update_teacher/<str:teacher_name>', views.update_teacher, name='update_teacher'),
+    path('update_student/<str:student_name>', views.update_student, name='update_student'),
     path('delete_student/<str:student_name>', views.delete_student, name='delete_student'),
+    path('delete_teacher/<str:teacher_name>', views.delete_teacher, name='delete_teacher'),
     path('delete_subject/<str:subject_name>', views.delete_subject, name='delete_subject'),
-    #path('update_student/', views.add_student, name='add_student'),
     #path('update_subject/', views.add_subject, name='add_subject')
 ]

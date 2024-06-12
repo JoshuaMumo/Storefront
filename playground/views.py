@@ -100,6 +100,15 @@ def update_teacher(request, teacher_name):
         return redirect('teachers')
     return render(request, 'update_teacher.html', {'teacher': teacher})
 
+
+def update_student(request, student_name):
+    student = get_object_or_404(Teacher, name=student_name)
+    if request.method == 'POST':
+        student.grade = request.POST.get('grade')
+        student.save()
+        return redirect('students')
+    return render(request, 'update_student.html', {'student': student})
+
 def delete_teacher(request, teacher_name):
     teacher = get_object_or_404(Teacher, name=teacher_name)
     teacher.delete()
