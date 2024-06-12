@@ -78,15 +78,7 @@
 <body>
     <div class="container">
         <h1>Login</h1>
-        {% block content %}
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endblock %}
+        
         <form method="POST" action="">
             {% csrf_token %}
             <label for="username">Username</label>
@@ -95,6 +87,15 @@
             <input type="password" name="password" id="password" placeholder="Enter Password"/>
             <input type="submit" value="Login">
         </form>
+        
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
     </div>
 </body>
 </html>

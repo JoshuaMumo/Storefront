@@ -8,6 +8,7 @@ from .models import Student, Teacher
 from Demos.win32ts_logoff_disconnected import username
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 
 
@@ -23,8 +24,20 @@ def loginPage(request):
             user = User.objects.get(username=username)
         except:
             messages.error(request, 'User does not exist')
+            
+            
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Invalid Credentials')
     context = {}
     return render(request, 'login.html',context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('logout')
 def about(request):
     return render(request, 'about.html')
 

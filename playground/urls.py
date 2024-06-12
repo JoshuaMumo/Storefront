@@ -3,7 +3,8 @@ from . import views
 from . import student_views, teacher_views
 
 urlpatterns = [
-    path('', views.loginPage, name='loginPage'),
+    path('', views.loginPage, name='login'),
+    path("logout/", views.logoutUser, name="logout"),
     path('about/', views.about, name='about'),
     path('student_signin/', student_views.student_signin, name='student_signin'),
     path('teacher_signin/', teacher_views.teacher_signin, name='teacher_signin'),
@@ -13,4 +14,5 @@ urlpatterns = [
     path('rag_chatbot/', views.rag_chatbot, name='rag_chatbot'),
     path('teachers/', views.teachers_view, name='teachers'),
     path('students/', views.students_view, name='students'),
+    
 ]
