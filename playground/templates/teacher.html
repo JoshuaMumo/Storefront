@@ -100,7 +100,7 @@
               </li>
               <li><i class="bx bx-chevron-right"></i></li>
               <li>
-                <a class="active" href="#">Teachers</a>
+                <a class="active" href="{% url 'teachers'%}">Teachers</a>
               </li>
             </ul>
           </div>
@@ -129,6 +129,7 @@
                   <th>Teachers</th>
                   <th>Grade assigned</th>
                   <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -142,8 +143,11 @@
                   <td>
                     <span
                       class="status {% if teacher.status == 'active' %}completed{% else %}pending{% endif %}"
-                      >{{ teacher.status }}</span
-                    >
+                      >{{ teacher.status }}</span>
+                  </td>
+                  <td>
+                    <button class="btn-update">Update</button>
+                    <button class="btn-delete">Delete</button>
                   </td>
                 </tr>
                 {% endfor %}

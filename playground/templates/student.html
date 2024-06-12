@@ -129,6 +129,7 @@
                   <th>Student</th>
                   <th>Grade</th>
                   <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -143,6 +144,10 @@
                       class="status {% if student.status == 'active' %}completed{% else %}pending{% endif %}"
                       >{{ student.status }}</span
                     >
+                  </td>
+                  <td>
+                    <button class="btn-update">Update</button>
+                    <button class="btn-delete">Delete</button>
                   </td>
                 </tr>
                 {% endfor %}

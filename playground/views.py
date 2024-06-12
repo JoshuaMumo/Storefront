@@ -9,6 +9,7 @@ from Demos.win32ts_logoff_disconnected import username
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from aiohttp.client import request
 
 
 
@@ -67,3 +68,20 @@ def students_view(request):
 def subjects_view(request):
     subjects = Subject.objects.all()
     return render(request, 'subjects.html', {'subjects': subjects})
+
+def add_teacher(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        teacher = Teacher(name=name, email=email)
+        teacher.save()
+        return redirect('teachers')
+    return render(request, 'add_teacher.html')
+
+def update_teacher(request, teacher_id):
+    teacher = Teacher.objects.get(id=teacher_id)
+    if request.method == 'POST':
+        teacher.name = request.POST.get('name')
+        teacher.save()
+        return redirect('teachers')
+    return render(request, 'update_teacher.html', {'teacher': teacher})

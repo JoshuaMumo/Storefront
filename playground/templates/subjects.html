@@ -126,19 +126,22 @@
             <table>
               <thead>
                 <tr>
-                  <th>subjects</th>
+                  <th>Subjects</th>
                   <th>Grade assigned</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {% for subject in subjects %}
                 <tr>
                   <td>
-                    <img src="{% static 'img/people.png' %}" />
                     <p>{{ subject.name }}</p>
                   </td>
                   <td>{{ subject.grade_assigned }}</td>
                   <td>
+                  </td>
+                  <td>
+                    <button class="btn-delete">Delete</button>
                   </td>
                 </tr>
                 {% endfor %}
