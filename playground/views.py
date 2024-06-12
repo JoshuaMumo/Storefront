@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 import psutil
-from .models import Student, Teacher
+from .models import Student, Subject, Teacher
 from Demos.win32ts_logoff_disconnected import username
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -63,3 +63,7 @@ def teachers_view(request):
 def students_view(request):
     students = Student.objects.all()
     return render(request, 'student.html', {'students': students})
+
+def subjects_view(request):
+    subjects = Subject.objects.all()
+    return render(request, 'subjects.html', {'subjects': subjects})

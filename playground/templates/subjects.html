@@ -7,14 +7,14 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}" />
 
-    <title>Teachers</title>
+    <title>subjects</title>
   </head>
   <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-      <a href="{% url 'teachers' %}" class="brand">
+      <a href="{% url 'subjects' %}" class="brand">
         <i class="bx bxs-smile"></i>
-        <span class="text">Teachers</span>
+        <span class="text">subjects</span>
       </a>
       <ul class="side-menu top">
         <li>
@@ -93,14 +93,14 @@
       <main>
         <div class="head-title">
           <div class="left">
-            <h1>Teachers</h1>
+            <h1>subjects</h1>
             <ul class="breadcrumb">
               <li>
                 <a href="{% url 'dashboard' %}">Dashboard</a>
               </li>
               <li><i class="bx bx-chevron-right"></i></li>
               <li>
-                <a class="active" href="#">Teachers</a>
+                <a class="active" href="#">subjects</a>
               </li>
             </ul>
           </div>
@@ -110,8 +110,8 @@
           <li>
             <i class="bx bxs-group"></i>
             <span class="text">
-              <h3>{{ teachers.count }}</h3>
-              <p>Teachers</p>
+              <h3>{{ subjects.count }}</h3>
+              <p>Subjects</p>
             </span>
           </li>
         </ul>
@@ -119,31 +119,26 @@
         <div class="table-data">
           <div class="order">
             <div class="head">
-              <h3>Teachers List</h3>
+              <h3>Subjects List</h3>
               <i class="bx bx-search"></i>
               <i class="bx bx-filter"></i>
             </div>
             <table>
               <thead>
                 <tr>
-                  <th>Teachers</th>
+                  <th>subjects</th>
                   <th>Grade assigned</th>
-                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                {% for teacher in teachers %}
+                {% for subject in subjects %}
                 <tr>
                   <td>
                     <img src="{% static 'img/people.png' %}" />
-                    <p>{{ teacher.name }}</p>
+                    <p>{{ subject.name }}</p>
                   </td>
-                  <td>{{ teacher.grade_assigned }}</td>
+                  <td>{{ subject.grade_assigned }}</td>
                   <td>
-                    <span
-                      class="status {% if teacher.status == 'active' %}completed{% else %}pending{% endif %}"
-                      >{{ teacher.status }}</span
-                    >
                   </td>
                 </tr>
                 {% endfor %}
