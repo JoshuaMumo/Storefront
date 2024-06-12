@@ -1,7 +1,7 @@
 from multiprocessing import AuthenticationError
 import subprocess
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 import psutil
 from .models import Student, Subject, Teacher
@@ -78,10 +78,10 @@ def add_teacher(request):
         return redirect('teachers')
     return render(request, 'add_teacher.html')
 
-def update_teacher(request, teacher_id):
-    teacher = Teacher.objects.get(id=teacher_id)
-    if request.method == 'POST':
-        teacher.name = request.POST.get('name')
-        teacher.save()
-        return redirect('teachers')
-    return render(request, 'update_teacher.html', {'teacher': teacher})
+def update_teacher(request):
+    return render(request, 'update_teacher.html')
+
+def delete_teacher(request, teacher_name):
+    teacher = get_object_or_404(Teacher, name=teacher_name)
+    teacher.delete()
+    return redirect('teachers')

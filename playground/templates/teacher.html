@@ -146,8 +146,9 @@
                       >{{ teacher.status }}</span>
                   </td>
                   <td>
-                    <button class="btn-update">Update</button>
-                    <button class="btn-delete">Delete</button>
+                    <a href="{% url 'update_teacher' teacher.name %}" class="btn-update">Update</a>
+                    <a href="{% url 'delete_teacher' teacher.name %}" class="btn-delete">Delete</a>
+                  </td>
                   </td>
                 </tr>
                 {% endfor %}

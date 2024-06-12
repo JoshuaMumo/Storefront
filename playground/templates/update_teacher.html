@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Teacher</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Update Teacher</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ teacher.name }}">
+        <label for="grade_assigned">Grade Assigned:</label>
+        <input type="text" id="grade_assigned" name="grade_assigned" value="{{ teacher.grade_assigned }}">
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" value="{{ teacher.status }}">
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
