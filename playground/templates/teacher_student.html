@@ -85,7 +85,6 @@
           <i class="bx bxs-bell"></i>
           <span class="num">8</span>
         </a>
-
       </nav>
       <!-- NAVBAR -->
 
@@ -93,20 +92,26 @@
       <main>
         <div class="head-title">
           <div class="left">
-            <h1>Teachers</h1>
+            <h1>Teacher-Student Relationship</h1>
             <ul class="breadcrumb">
               <li>
                 <a href="{% url 'dashboard' %}">Dashboard</a>
               </li>
               <li><i class="bx bx-chevron-right"></i></li>
               <li>
-                <a class="active" href="{% url 'teachers'%}">Teachers</a>
+                <a class="active" href="{% url 'teacher_student' %}">Teacher-Student Relationship</a>
               </li>
             </ul>
           </div>
         </div>
-
         <ul class="box-info">
+          <li>
+            <i class="bx bxs-calendar-check"></i>
+            <span class="text">
+              <h3>{{ students.count }}</h3>
+              <p>Students</p>
+            </span>
+          </li>
           <li>
             <i class="bx bxs-group"></i>
             <span class="text">
@@ -114,52 +119,47 @@
               <p>Teachers</p>
             </span>
           </li>
+          <li>
+            <i class="bx bxs-user"></i>
+            <span class="text">
+              <h3>{{ subjects.count }}</h3>
+              <p>Subjects</p>
+            </span>
+          </li>
         </ul>
 
         <div class="table-data">
           <div class="order">
             <div class="head">
-              <h3>Teacher-Student-Subject Relationship List</h3>
+              <h3>Teachers List</h3>
               <i class="bx bx-search"></i>
               <i class="bx bx-filter"></i>
             </div>
             <table>
               <thead>
                 <tr>
-                  <th>Teachers</th>
-                  <th>Grade assigned</th>
-                  <th>Gender</th>
-                  <th>Age</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                  <th>Teacher</th>
+                  <th>Subject</th>
+                  <th>Students</th>
                 </tr>
               </thead>
               <tbody>
                 {% for teacher in teachers %}
                 <tr>
+                  <td>{{ teacher.name }}</td>
+                  <td>{{ teacher.subject }}</td>
                   <td>
-                    <p>{{ teacher.name }}</p>
+                    <ul>
+                      {% for student in teacher.students.all %}
+                      <li>{{ student.name }} (Age: {{ student.age }})</li>
+                      {% endfor %}
+                    </ul>
                   </td>
-                  <td>{{ teacher.grade_assigned }}</td>
-                  <td>{{ teacher.gender }}</td>
-                  <td>{{ teacher.age }}</td>
-                  <td>
-                    <span
-                      class="status {% if teacher.status == 'active' %}completed{% else %}pending{% endif %}"
-                      >{{ teacher.status }}</span>
-                  </td>
-                  <td>
-                    <a href="{% url 'update_teacher' teacher.name %}" class="btn-update">Update</a>
-                    <a href="{% url 'delete_teacher' teacher.name %}" class="btn-delete">Delete</a>
-                  </td>
-                  <td>
-                  </td>
-                </tr>          
+                </tr>
                 {% endfor %}
               </tbody>
             </table>
           </div>
-          <a href="{% url 'add_teacher' %}" class="btn-add">Add Teacher</a>
         </div>
       </main>
       <!-- MAIN -->

@@ -124,4 +124,6 @@ def delete_subject(request, subject_name):
     subject.delete()
     return redirect('subjects')
 
-
+def teacher_student_view(request):
+    teachers = Teacher.objects.prefetch_related('students').all()
+    return render(request, 'teacher_student.html', {'teachers': teachers})
