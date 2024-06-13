@@ -128,6 +128,7 @@
                 <tr>
                   <th>Student</th>
                   <th>Grade</th>
+                  <th>Gender</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -139,6 +140,7 @@
                     <p>{{ student.name }}</p>
                   </td>
                   <td>{{ student.grade }}</td>
+                  <td>{{ student.gender }}</td>
                   <td>
                     <span
                       class="status {% if student.status == 'active' %}completed{% else %}pending{% endif %}"

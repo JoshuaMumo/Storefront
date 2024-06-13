@@ -102,7 +102,7 @@ def update_teacher(request, teacher_name):
 
 
 def update_student(request, student_name):
-    student = get_object_or_404(Teacher, name=student_name)
+    student = get_object_or_404(Student, name=student_name)
     if request.method == 'POST':
         student.grade = request.POST.get('grade')
         student.save()
