@@ -24,18 +24,16 @@ SECRET_KEY = 'django-insecure-v!)g1si2i6ice$hbv-^_+(yof(zz8$yjy5(7ubx3268+wa0zq_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-import os
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'b42a-105-27-98-10.ngrok-free.app',    
+]
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    os.getenv('NGROK_HOST'),
+CSRF_TRUSTED_ORIGINS = [
+    'https://b42a-105-27-98-10.ngrok-free.app',
 ]
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'eb65-105-27-206-94.ngrok-free.app',
-]
+
 
 
 # Application definition
@@ -59,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware', 
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -140,7 +138,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SITE_ID = 1
-CSRF_TRUSTED_ORIGINS=[]
 
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
